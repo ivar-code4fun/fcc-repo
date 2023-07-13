@@ -1,0 +1,34 @@
+function chunkArrayInGroups(arr, size) {
+  let retArray = [];
+  let tempArray = [];
+  let chunkSize = Math.floor(arr.length/size);
+  console.log("*********************");
+  console.log("Value of array : " + arr);
+  console.log("Value of size " + size);
+  console.log("chunk size " + chunkSize);
+  let remaining = Math.floor(arr.length%size);
+  console.log("remaining " + remaining);
+  let counter = 0;
+  while (chunkSize > 0) { 
+  for (let i = 0; i < size; i++) {
+    tempArray.push(arr[counter]);
+    counter++;
+  }
+  retArray.push(tempArray);
+  chunkSize--;
+  tempArray = [];
+  }
+  console.log("Value of counter is " + counter);
+  if (remaining > 0) {
+      while (remaining > 0 && counter < arr.length) {
+      tempArray.push(arr[counter]);
+      remaining--;
+      counter++;
+      }
+      retArray.push(tempArray);
+  }
+  console.log(retArray);
+  return retArray;
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);

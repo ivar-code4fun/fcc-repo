@@ -1,0 +1,21 @@
+function frankenSplice(arr1, arr2, n) {
+  let returnArr = [];
+  
+  for (let i = 0; i < n; i++) {
+    returnArr.push(arr2[i]);
+  }
+  console.log("After first operation : "+ returnArr);
+
+  for (let j = 0; j < arr1.length; j++) {
+    returnArr.push(arr1[j]);
+  }
+  console.log("After second operation : "+ returnArr);
+
+  for (let k = arr2.length - n; k < arr2.length; k++) {
+    returnArr.push(arr2[k]);
+  }
+  console.log("After third operation : "+ returnArr);
+  return returnArr;
+}
+
+frankenSplice([1, 2, 3], [4, 5, 6], 1);
