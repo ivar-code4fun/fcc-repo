@@ -1,0 +1,7 @@
+> echo hello bash
+> touch questionnaire.sh
+> sh questionnaire.sh
+> bash questionnaire.sh
+> which bash
+/usr/bin/bash
+That's the absolute path to the bash interpreter. You can tell your program to use it by placing a shebang at the very top of the file like this: #!<path_to_interpreter>. Add a shebang at the very top of your file, the one you want looks like this: #!/bin/bash
