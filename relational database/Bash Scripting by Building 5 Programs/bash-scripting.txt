@@ -5,3 +5,44 @@
 > which bash
 /usr/bin/bash
 That's the absolute path to the bash interpreter. You can tell your program to use it by placing a shebang at the very top of the file like this: #!<path_to_interpreter>. Add a shebang at the very top of your file, the one you want looks like this: #!/bin/bash
+> ./questionnaire.sh
+> ls -l
+> chmod +x questionnaire.sh
+> ls -l
+> ./questionnaire.sh
+> echo --help
+> touch countdown.sh
+> chmod +x countdown.sh
+> ./countdown.sh arg1 arg2 arg3
+> echo $?  //exit status of a command
+> ls -y; echo $? // a non zero exit status indicates not a success
+You tried a few of the arithmetic operators, those work for integers. Try one of the file operators. The first one on the list checks if a file exists. Type [[ -a countdown.sh ]]; echo $? in the terminal to see if your file exists.
+> [[ -a countdown.sh ]];echo $?  // 0
+> [[ -a bad_file.txt ]];echo $? // 1
+> [[ -x countdown.sh ]]; echo $?
+> [[ -x countdown.sh && 5 -le 4 ]]; echo $?
+: '
+  comment here
+  more comment here
+'
+> touch bingo.sh
+> chmod +x bingo.sh
+A shell comes with environment variables. View them by entering printenv in the terminal.
+View all variables in the shell with declare -p. -p stands for print
+This list includes all the environment variables, and any others that may have been created in the current shell. There's one named RANDOM. Use echo to print it in the terminal.
+declare can be used to create variables, but you are just going to use it to view them for now. If you scroll up a little, you should find your I and J variables in there. View J with declare -p J
+> echo $(( RANDOM%75 ))
+> ARR=("a" "b" "c")
+> echo ${ARR[1]}
+> echo ${ARR[@]}
+> declare -p ARR
+
+FUNCTION_NAME() {
+  STATEMENTS
+}
+
+
+
+
+
+
