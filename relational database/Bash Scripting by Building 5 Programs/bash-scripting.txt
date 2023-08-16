@@ -41,6 +41,15 @@ FUNCTION_NAME() {
   STATEMENTS
 }
 
+> [[ "hello" == "hello" ]]; echo $?
+> [[ "hello world" =~ "lo wor" ]]; echo $?
+> [[ "hello world" =~ ^h ]]; echo $?
+> [[ "hello world" =~ ^h.+d$ ]]; echo $?
+> VAR="hello world"
+> echo $VAR
+> [[ $VAR == "hello world" ]];echo $?
+> [[ $VAR =~ \?$ ]];echo $?
+
 
 
 

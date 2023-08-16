@@ -1,0 +1,55 @@
+> psql --username=freecodecamp --dbname=postgres
+> \l -- view existing databases
+> CREATE DATABASE students;
+> \l
+> \c students;
+> CREATE TABLE students();
+> CREATE TABLE majors();
+> CREATE TABLE courses();
+> CREATE TABLE majors_courses();
+> \d -- display tables
+> ALTER TABLE students ADD COLUMN student_id SERIAL PRIMARY KEY;
+> ALTER TABLE students ADD COLUMN first_name VARCHAR(50) NOT NULL;
+> ALTER TABLE students ADD COLUMN last_name VARCHAR(50) NOT NULL;
+> ALTER TABLE students ADD COLUMN major_id INT;
+> ALTER TABLE students ADD COLUMN gpa NUMERIC(2,1);
+> \d students
+> ALTER TABLE majors ADD COLUMN major_id SERIAL PRIMARY KEY;
+> ALTER TABLE majors ADD COLUMN major VARCHAR(50) NOT NULL;
+> \d majors
+> ALTER TABLE students ADD FOREIGN KEY(major_id) REFERENCES majors(major_id);
+> \d students
+> ALTER TABLE courses ADD COLUMN course_id SERIAL PRIMARY KEY;
+> ALTER TABLE courses ADD COLUMN course VARCHAR(100) NOT NULL;
+> \d courses
+> ALTER TABLE majors_courses ADD COLUMN major_id INT;
+> ALTER TABLE majors_courses ADD FOREIGN KEY(major_id) REFERENCES majors(major_id);
+> ALTER TABLE majors_courses ADD COLUMN course_id INT;
+> ALTER TABLE majors_courses ADD FOREIGN KEY(course_id) REFERENCES courses(course_id);
+> \d majors_courses
+> ALTER TABLE majors_courses ADD PRIMARY KEY(major_id, course_id);
+> \d
+> \d majors
+> INSERT INTO majors(major) VALUES ('Database Administration');
+> SELECT * FROM majors;
+> INSERT INTO courses(course) VALUES('Data Structures and Algorithms');
+> SELECT * FROM courses;
+> \d majors_courses
+> INSERT INTO majors_courses(major_id, course_id) VALUES (1,1);
+> SELECT * FROM majors_courses;
+> \d students
+> INSERT INTO students(first_name,last_name,major_id,gpa) VALUES ('Rhea','Kellems',1,2.5);
+> SELECT * FROM students;
+> touch insert_data.sh
+> chmod +x insert_data.sh
+> ./insert_data.sh
+> declare -p IFS -- IFS stands for Internal Field Separator
+> SELECT * FROM majors;
+> TRUNCATE majors;
+> TRUNCATE majors, students, majors_courses;
+> SELECT * FROM majors;
+> SELECT * FROM majors_courses;
+
+Final coimmand
+
+> pg_dump --clean --create --inserts --username=freecodecamp students > students.sql

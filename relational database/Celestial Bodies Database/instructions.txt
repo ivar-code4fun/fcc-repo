@@ -1,3 +1,9 @@
+Step 1: Complete the project
+The project runs in a virtual machine, complete the user stories described in there and get all the tests to pass to finish step 1.
+Important: After you pass all the project tests, save a dump of your database into a universe.sql file so you can complete step 2. There will be instructions how to do that within the virtual machine.
+
+
+
 Instructions
 For this project, you need to log in to PostgreSQL with psql to create your database. Do that by entering psql --username=freecodecamp --dbname=postgres in the terminal. Make all the tests below pass to complete the project. Be sure to get creative, and have fun!
 
@@ -11,6 +17,10 @@ If you leave your virtual machine, your database may not be saved. You can make 
 If you are saving your progress on freeCodeCamp.org, after getting all the tests to pass, follow the instructions above to save a dump of your database. Save the universe.sql file in a public repository and submit the URL to it on freeCodeCamp.org.
 
 example - https://github.com/miniplanck/Relational-Database-fCC/blob/main/Celestial%20Bodies%20Database/universe.sql
+
+
+
+
 
 ==================================================================================================================================================================================
 

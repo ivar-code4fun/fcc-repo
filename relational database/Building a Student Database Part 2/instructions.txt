@@ -1,0 +1,14 @@
+> psql --username=freecodecamp --dbname=postgres
+> psql -U postgres < students.sql
+> \c students
+> \d
+> \d students
+> touch student_info.sh
+> chmod +x student_info.sh
+> ./student_info.sh
+> SELECT first_name,last_name,gpa FROM students WHERE gpa < 2.5;
+> ./student_info.sh
+> SELECT * FROM majors;
+> SELECT * FROM majors WHERE major='Game Design';
+> SELECT * FROM majors WHERE major!='Game Design';
+> SELECT * FROM majors WHERE major < 'G';
