@@ -12,3 +12,57 @@
 > SELECT * FROM majors WHERE major='Game Design';
 > SELECT * FROM majors WHERE major!='Game Design';
 > SELECT * FROM majors WHERE major < 'G';
+
+==========================================================================================
+> psql --username=freecodecamp --dbname=postgres
+> \l
+Split terminal
+> psql -U postgres < students.sql
+> \l
+postgres=> \l
+postgres=>                                  List of databases
++-----------+--------------+----------+---------+---------+-----------------------+
+|   Name    |    Owner     | Encoding | Collate |  Ctype  |   Access privileges   |
++-----------+--------------+----------+---------+---------+-----------------------+
+| postgres  | postgres     | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| students  | freecodecamp | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| template0 | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|           |              |          |         |         | postgres=CTc/postgres |
+| template1 | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|           |              |          |         |         | postgres=CTc/postgres |
++-----------+--------------+----------+---------+---------+-----------------------+
+> \c students
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+You are now connected to database "students" as user "freecodecamp".
+> \d
+students=>                       List of relations
++--------+-------------------------+----------+--------------+
+| Schema |          Name           |   Type   |    Owner     |
++--------+-------------------------+----------+--------------+
+| public | courses                 | table    | freecodecamp |
+| public | courses_course_id_seq   | sequence | freecodecamp |
+| public | majors                  | table    | freecodecamp |
+| public | majors_courses          | table    | freecodecamp |
+| public | majors_major_id_seq     | sequence | freecodecamp |
+| public | students                | table    | freecodecamp |
+| public | students_student_id_seq | sequence | freecodecamp |
++--------+-------------------------+----------+--------------+
+
+> \d students
+> SELECT * FROM students;
+> SELECT * FROM courses;
+> SELECT * FROM majors;
+> touch student_info.sh
+> chmod +x student_info.sh
+> Inside student_info.sh put 
+	#!/bin/bash
+> Inside student_info.sh put
+	# Info about my computer science students from students database
+> echo -e "\n~~ My Computer Science Students ~~\n"
+> ./student_info.sh
+> PSQL="psql -X --username=freecodecamp --dbname=students --no-align --tuples-only -c"
+> echo -e "\nFirst name, last name, and GPA of students with a 4.0 GPA:"
+> SELECT * FROM students;
+
+
+
