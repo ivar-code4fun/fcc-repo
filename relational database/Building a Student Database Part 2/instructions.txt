@@ -63,6 +63,102 @@ students=>                       List of relations
 > PSQL="psql -X --username=freecodecamp --dbname=students --no-align --tuples-only -c"
 > echo -e "\nFirst name, last name, and GPA of students with a 4.0 GPA:"
 > SELECT * FROM students;
+> SELECT first_name FROM students;
+> SELECT first_name, last_name, gpa FROM students;
+> SELECT first_name, last_name, gpa FROM students WHERE gpa < 2.5;
+> SELECT first_name, last_name, gpa FROM students WHERE gpa >= 3.8;
+> SELECT first_name, last_name, gpa FROM students WHERE gpa != 4.0;
+> Inside student_info.sh
+	#!/bin/bash
+> Info about my computer science students from students database
+	echo -e "\n~~ My Computer Science Students ~~\n"
+	PSQL="psql -X --username=freecodecamp --dbname=students --no-align --tuples-only -c"
+	echo -e "\nFirst name, last name, and GPA of students with a 4.0 GPA:"
+	echo "$($PSQL "SELECT first_name, last_name,gpa FROM students WHERE gpa = 4.0")"
+> camper: /project$ ./student_info.sh
+
+~~ My Computer Science Students ~~
+
+
+First name, last name, and GPA of students with a 4.0 GPA:
+Casares|Hijo|4.0
+Vanya|Hassanah|4.0
+Dejon|Howell|4.0
+> echo -e "\nAll course names whose first letter is before 'D' in the alphabet:"
+> SELECT * FROM majors;
+> SELECT * FROM majors WHERE major='Game Design';
+> SELECT * FROM majors WHERE major!='Game Design';
+> SELECT * FROM majors WHERE major > 'Game Design';
+> SELECT * FROM majors WHERE major >= 'Game Design';
+> SELECT * FROM majors WHERE major < 'G';
+> Info about my computer science students from students database
+	#!/bin/bash
+# Info about my computer science students from students database
+	echo -e "\n~~ My Computer Science Students ~~\n"
+	PSQL="psql -X --username=freecodecamp --dbname=students --no-align --tuples-only -c"
+	echo -e "\nFirst name, last name, and GPA of students with a 4.0 GPA:"
+	echo "$($PSQL "SELECT first_name, last_name,gpa FROM students WHERE gpa = 4.0")"
+	echo -e "\nAll course names whose first letter is before 'D' in the alphabet:"
+	echo "$($PSQL "SELECT course FROM courses WHERE course < 'D'")"
+> ./student_info.sh
+> echo -e "\nFirst name, last name, and GPA of students whose last name begins with an 'R' or after and have a GPA greater than 3.8 or less than 2.0:"
+> SELECT * FROM students;
+> SELECT * FROM students WHERE last_name < 'M';
+> SELECT * FROM students WHERE last_name < 'M' OR gpa = 3.9;
+> SELECT * FROM students WHERE last_name < 'M' AND gpa = 3.9;
+> SELECT * FROM students WHERE last_name < 'M' AND gpa = 3.9 OR gpa < 2.3;
+> SELECT * FROM students WHERE last_name < 'M' AND (gpa = 3.9 OR gpa < 2.3);
+>
+	#!/bin/bash
+	# Info about my computer science students from students database
+	echo -e "\n~~ My Computer Science Students ~~\n"
+
+	PSQL="psql -X --username=freecodecamp --dbname=students --no-align --tuples-only -c"
+
+	echo -e "\nFirst name, last name, and GPA of students with a 4.0 GPA:"
+	echo "$($PSQL "SELECT first_name, last_name, gpa FROM students WHERE gpa = 4.0")"
+
+	echo -e "\nAll course names whose first letter is before 'D' in the alphabet:"
+	echo "$($PSQL "SELECT course FROM courses WHERE course < 'D'")"
+	echo -e "\nFirst name, last name, and GPA of students whose last name begins with an 'R' or after and have a GPA greater than 3.8 or less than 2.0:"
+	echo "$($PSQL "SELECT * FROM students")"
+	echo "$($PSQL "SELECT first_name, last_name, gpa FROM students WHERE last_name > 'R' AND (gpa > 3.8 OR gpa < 2)")"
+> ./student_info.sh
+> echo -e "\nLast name of students whose last name contains a case insensitive 'sa' or have an 'r' as the second to last letter:"
+> SELECT * FROM courses;
+> SELECT * FROM courses WHERE course LIKE '_lgorithms';
+> SELECT * FROM courses WHERE course LIKE '%lgorithms';
+> SELECT * FROM courses WHERE course LIKE 'Web%';
+> SELECT * FROM courses WHERE course LIKE '_e%';
+> SELECT * FROM courses WHERE course LIKE '% %';
+> SELECT * FROM courses WHERE course NOT LIKE '% %';
+> SELECT * FROM courses WHERE course LIKE '%A%';
+> SELECT * FROM courses WHERE course ILIKE '%A%';
+> SELECT * FROM courses WHERE course NOT ILIKE '%A%';
+> SELECT * FROM courses WHERE course NOT ILIKE '%A%' AND course LIKE '% %';
+> echo "$($PSQL "SELECT last_name FROM students WHERE last_name ILIKE '%SA%' OR last_name LIKE '%r_'")";
+> ./student_info.sh
+
+#!/bin/bash
+
+# Info about my computer science students from students database
+
+echo -e "\n~~ My Computer Science Students ~~\n"
+
+PSQL="psql -X --username=freecodecamp --dbname=students --no-align --tuples-only -c"
+
+echo -e "\nFirst name, last name, and GPA of students with a 4.0 GPA:"
+echo "$($PSQL "SELECT first_name, last_name, gpa FROM students WHERE gpa = 4.0")"
+
+echo -e "\nAll course names whose first letter is before 'D' in the alphabet:"
+echo "$($PSQL "SELECT course FROM courses WHERE course < 'D'")"
+
+echo -e "\nFirst name, last name, and GPA of students whose last name begins with an 'R' or after and have a GPA greater than 3.8 or less than 2.0:"
+echo "$($PSQL "SELECT first_name, last_name, gpa FROM students WHERE last_name >= 'R' AND (gpa > 3.8 OR gpa < 2.0)")"
+
+echo -e "\nLast name of students whose last name contains a case insensitive 'sa' or have an 'r' as the second to last letter:"
+echo "$($PSQL "SELECT last_name FROM students WHERE last_name ILIKE '%sa%' OR last_name ILIKE '%r_'")"
+
 
 
 
